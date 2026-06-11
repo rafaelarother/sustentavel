@@ -1,1 +1,266 @@
 
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Cocho de Água Autolimpante</title>
+
+<style>
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:Arial, Helvetica, sans-serif;
+}
+
+body{
+    background:#f4f8fb;
+    color:#333;
+}
+
+header{
+    background:linear-gradient(135deg,#0077b6,#00b4d8);
+    color:white;
+    text-align:center;
+    padding:80px 20px;
+}
+
+header h1{
+    font-size:3rem;
+    margin-bottom:15px;
+}
+
+header p{
+    font-size:1.2rem;
+    max-width:800px;
+    margin:auto;
+}
+
+.btn{
+    display:inline-block;
+    margin-top:25px;
+    padding:14px 30px;
+    background:white;
+    color:#0077b6;
+    text-decoration:none;
+    border-radius:50px;
+    font-weight:bold;
+    transition:.3s;
+}
+
+.btn:hover{
+    transform:scale(1.05);
+}
+
+section{
+    padding:70px 10%;
+}
+
+.cards{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+    gap:20px;
+    margin-top:40px;
+}
+
+.card{
+    background:white;
+    padding:25px;
+    border-radius:15px;
+    box-shadow:0 5px 15px rgba(0,0,0,.1);
+    transition:.3s;
+}
+
+.card:hover{
+    transform:translateY(-5px);
+}
+
+.card h3{
+    color:#0077b6;
+    margin-bottom:10px;
+}
+
+.calculadora{
+    background:white;
+    padding:30px;
+    border-radius:15px;
+    box-shadow:0 5px 15px rgba(0,0,0,.1);
+    max-width:600px;
+    margin:auto;
+}
+
+input{
+    width:100%;
+    padding:12px;
+    margin:10px 0;
+    border:1px solid #ccc;
+    border-radius:8px;
+}
+
+button{
+    background:#0077b6;
+    color:white;
+    border:none;
+    padding:12px 20px;
+    border-radius:8px;
+    cursor:pointer;
+}
+
+button:hover{
+    background:#005f91;
+}
+
+.resultado{
+    margin-top:20px;
+    font-size:1.2rem;
+    font-weight:bold;
+}
+
+.faq-item{
+    background:white;
+    margin-bottom:10px;
+    border-radius:10px;
+    overflow:hidden;
+    box-shadow:0 2px 8px rgba(0,0,0,.08);
+}
+
+.faq-question{
+    padding:18px;
+    cursor:pointer;
+    font-weight:bold;
+    background:#eaf6fb;
+}
+
+.faq-answer{
+    display:none;
+    padding:18px;
+}
+
+footer{
+    background:#003049;
+    color:white;
+    text-align:center;
+    padding:30px;
+}
+</style>
+</head>
+<body>
+
+<header>
+    <h1>💧 Cocho de Água Autolimpante</h1>
+    <p>
+        Tecnologia inteligente para manter a água limpa,
+        reduzir desperdícios e melhorar o bem-estar animal.
+    </p>
+    <a href="#calculadora" class="btn">Calcular Economia</a>
+</header>
+
+<section>
+    <h2>Por que utilizar um cocho autolimpante?</h2>
+
+    <div class="cards">
+        <div class="card">
+            <h3>🚿 Limpeza Automática</h3>
+            <p>Remove sujeiras e resíduos automaticamente, mantendo a água sempre limpa.</p>
+        </div>
+
+        <div class="card">
+            <h3>💧 Economia de Água</h3>
+            <p>Reduz desperdícios e otimiza o consumo diário da propriedade.</p>
+        </div>
+
+        <div class="card">
+            <h3>🐄 Saúde Animal</h3>
+            <p>Água limpa incentiva o consumo e melhora o desempenho do rebanho.</p>
+        </div>
+
+        <div class="card">
+            <h3>⏱ Menos Trabalho</h3>
+            <p>Diminui a necessidade de limpeza manual frequente.</p>
+        </div>
+    </div>
+</section>
+
+<section id="calculadora">
+    <h2 style="text-align:center;margin-bottom:30px;">
+        Calculadora de Economia
+    </h2>
+
+    <div class="calculadora">
+        <label>Quantidade de animais:</label>
+        <input type="number" id="animais" placeholder="Ex: 100">
+
+        <label>Litros desperdiçados por animal/dia:</label>
+        <input type="number" id="desperdicio" placeholder="Ex: 5">
+
+        <button onclick="calcular()">
+            Calcular Economia Mensal
+        </button>
+
+        <div class="resultado" id="resultado"></div>
+    </div>
+</section>
+
+<section>
+    <h2 style="margin-bottom:30px;">Perguntas Frequentes</h2>
+
+    <div class="faq-item">
+        <div class="faq-question">Como funciona a autolimpeza?</div>
+        <div class="faq-answer">
+            O sistema remove automaticamente sedimentos e impurezas acumuladas.
+        </div>
+    </div>
+
+    <div class="faq-item">
+        <div class="faq-question">Serve para bovinos?</div>
+        <div class="faq-answer">
+            Sim. Pode ser utilizado para bovinos, equinos e outros animais de produção.
+        </div>
+    </div>
+
+    <div class="faq-item">
+        <div class="faq-question">Reduz custos?</div>
+        <div class="faq-answer">
+            Sim. Há economia de água, mão de obra e manutenção.
+        </div>
+    </div>
+</section>
+
+<footer>
+    <p>© 2026 - Sistema de Cocho de Água Autolimpante</p>
+</footer>
+
+<script>
+function calcular() {
+
+    let animais = Number(document.getElementById('animais').value);
+    let desperdicio = Number(document.getElementById('desperdicio').value);
+
+    if(animais <= 0 || desperdicio <= 0){
+        document.getElementById('resultado').innerHTML =
+        "Preencha os valores corretamente.";
+        return;
+    }
+
+    let economia = animais * desperdicio * 30;
+
+    document.getElementById('resultado').innerHTML =
+    `Economia estimada: <span style="color:#0077b6">${economia.toLocaleString()} litros/mês</span>`;
+}
+
+document.querySelectorAll(".faq-question").forEach(item=>{
+    item.addEventListener("click",()=>{
+        let answer = item.nextElementSibling;
+
+        if(answer.style.display === "block"){
+            answer.style.display = "none";
+        }else{
+            answer.style.display = "block";
+        }
+    });
+});
+</script>
+
+</body>
+</html>
